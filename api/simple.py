@@ -19,5 +19,7 @@ def index():
 # the function parameters
 
 def predict(day_of_week):
-    wait_prediction = day_of_week - 2*.8  #just an example
+    # REMEMBER that the parameters passed above are of type str
+    # so don't forget to consider this and convert to numerical datatype.
+    wait_prediction = int(day_of_week) - 2*.8  #just an example
     return {'wait': wait_prediction}
