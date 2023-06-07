@@ -4,8 +4,9 @@ app = FastAPI()
 
 # define a root '/' endpoint
 
-@app.get("/")
 
+# Each one of the below is an endpoint!
+@app.get("/")
 def index():
     # Here you can load a machine learning model
     # You can also do a prediction model.predict(...)
