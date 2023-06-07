@@ -1,9 +1,9 @@
 FROM python:3.10.6-buster
 
-COPY app /app
+COPY fast_api /fast_api
 COPY requirements.txt /requirements.txt
 
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-CMD uvicorn app.simple:app --host 0.0.0.0
+CMD uvicorn fast_api.api:fast_api --host 0.0.0.0 --port $PORT
