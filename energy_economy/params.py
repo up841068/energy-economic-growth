@@ -7,32 +7,18 @@ GCP_REGION = os.environ.get("GCP_REGION") # OK
 BQ_DATASET = os.environ.get("BQ_DATASET") # OK
 BQ_REGION = os.environ.get("BQ_REGION") # OK
 BUCKET_NAME = os.environ.get("BUCKET_NAME") # OK
-GCP_TABLE_ECONOMIC = os.environ.get("GCP_TABLE_ECONOMIC") # OK
-GCP_TABLE_ENERGY = os.environ.get("GCP_TABLE_ENERGY") # OK
-
+GCP_TABLE_TRAIN = os.environ.get("GCP_TABLE_TRAIN") # OK
+GCP_TABLE_TEST = os.environ.get("GCP_TABLE_TEST") # OK
+MODEL_TARGET = os.environ.get("MODEL_TARGET")
+MLFLOW_MODEL_NAME = os.environ.get("MLFLOW_MODEL_NAME")
+MLFLOW_TRACKING_URI = os.environ.get("MLFLOW_TRACKING_URI")
+MLFLOW_EXPERIMENT = os.environ.get("MLFLOW_EXPERIMENT")
 
 ##################  CONSTANTS  #####################
 LOCAL_DATA_PATH = os.path.join(os.path.expanduser('~'), ".lewagon", "mlops", "data", "raw") # OK
 LOCAL_REGISTRY_PATH =  os.path.join(os.path.expanduser('~'), ".lewagon", "mlops", "training_outputs")
 
-COLUMN_NAMES_RAW_ENERGY = ['country', 'year', 'iso_code', 'net_elec_imports', 'per_capita_electricity','biofuel_elec_per_capita','hydro_elec_per_capita', 'solar_elec_per_capita','wind_elec_per_capita']
-COLUMN_NAMES_RAW_GDP = ['Series Name', 'Series Code', 'Country Name', 'Country Code',
-       '1990 [YR1990]', '2000 [YR2000]', '2013 [YR2013]', '2014 [YR2014]',
-       '2015 [YR2015]', '2016 [YR2016]', '2017 [YR2017]', '2018 [YR2018]',
-       '2019 [YR2019]', '2020 [YR2020]', '2021 [YR2021]', '2022 [YR2022]',
-       '2012 [YR2012]', '2011 [YR2011]', '2010 [YR2010]', '2009 [YR2009]',
-       '2008 [YR2008]', '2007 [YR2007]', '2006 [YR2006]', '2005 [YR2005]',
-       '2004 [YR2004]', '2003 [YR2003]', '2002 [YR2002]', '2001 [YR2001]',
-       '1999 [YR1999]', '1998 [YR1998]', '1997 [YR1997]', '1996 [YR1996]',
-       '1995 [YR1995]', '1994 [YR1994]', '1993 [YR1993]', '1992 [YR1992]',
-       '1991 [YR1991]', '1989 [YR1989]', '1988 [YR1988]', '1987 [YR1987]',
-       '1986 [YR1986]', '1985 [YR1985]', '1984 [YR1984]', '1983 [YR1983]',
-       '1982 [YR1982]', '1981 [YR1981]', '1980 [YR1980]', '1979 [YR1979]',
-       '1978 [YR1978]', '1977 [YR1977]', '1976 [YR1976]', '1975 [YR1975]',
-       '1974 [YR1974]', '1973 [YR1973]', '1972 [YR1972]', '1971 [YR1971]',
-       '1970 [YR1970]', '1969 [YR1969]', '1968 [YR1968]', '1967 [YR1967]',
-       '1966 [YR1966]', '1965 [YR1965]', '1964 [YR1964]', '1963 [YR1963]',
-       '1962 [YR1962]', '1961 [YR1961]', '1960 [YR1960]']
+COLUMN_NAMES = ['scale__coal_elec_per_capita','scale__oil_elec_per_capita','scale__gas_elec_per_capita','scale__hydro_elec_per_capita','scale__nuclear_elec_per_capita','scale__biofuel_elec_per_capita','scale__other_renewables_elec_per_capita_exc_biofuel','scale__solar_elec_per_capita','scale__wind_elec_per_capita','remainder__country','remainder__year','remainder__GDP_per_capita']
 
 # DTYPES_RAW = {
 #     "fare_amount": "float32",
