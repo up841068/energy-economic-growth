@@ -6,20 +6,24 @@ from pathlib import Path
 
 from energy_economy.params import *
 
-
+#OK!
 def get_data_with_cache(
         gcp_project:str,
         query:str,
         cache_path:Path,
         data_has_header=True
-    ) -> pd.DataFrame:
+        ) -> pd.DataFrame:
     """
-    Retrieve `query` data from BigQuery, or from `cache_path` if the file exists
-    Store at `cache_path` if retrieved from BigQuery for future use
+    Retrieve `query` data from BigQuery, or from `cache_path` if the file exists #OK!
+    Store query result as a local CSV if it doesn't exist locally for future use #OK!
     """
+
+    # Checks if local file where CSV would be stored exists, and if so, get processed data from there
     if cache_path.is_file():
         print(Fore.BLUE + "\nLoad data from local CSV..." + Style.RESET_ALL)
         df = pd.read_csv(cache_path, header='infer' if data_has_header else None)
+
+    # If local file doesn't exist, get processed data from BigQuery and saves in local file
     else:
         print(Fore.BLUE + "\nLoad data from BigQuery server..." + Style.RESET_ALL)
         client = bigquery.Client(project=gcp_project)

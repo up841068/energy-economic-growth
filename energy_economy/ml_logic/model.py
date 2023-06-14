@@ -1,4 +1,3 @@
-import pandas as pd
 import numpy as np
 from colorama import Fore, Style
 
@@ -9,11 +8,13 @@ from sklearn.pipeline import make_pipeline
 import warnings
 warnings.filterwarnings("ignore")
 
-
+#OK!
 def initialize_model():
     """
     Initialize the Ridge model
     """
+
+    # Initialize the model
     poly_model = PolynomialFeatures(degree=3)
     ridge_reg = Ridge(alpha=0.1)
 
@@ -24,27 +25,29 @@ def initialize_model():
 
     return pipeline
 
-
+#OK!
 def train_model(model,
                 X: np.ndarray,
                 y: np.ndarray):
     """
-    Fit the model and return the fitted_model
+    Fit the model on the train dataset and return the fitted model
     """
 
     print(Fore.BLUE + "\nTraining model..." + Style.RESET_ALL)
-    # Fit the pipeline to the training data
+
+    # Fit the pipeline (model) to the training data
     model.fit(X, y)
 
     print(f"✅ Model trained on {len(X)} rows")
 
     return model
 
+#OK!
 def evaluate_model(model,
                    X: np.ndarray,
                    y: np.ndarray):
     """
-    Evaluate trained model performance on the dataset
+    Evaluate trained model performance on the test dataset
     """
 
     print(Fore.BLUE + f"\nEvaluating model on {len(X)} rows..." + Style.RESET_ALL)
@@ -53,6 +56,8 @@ def evaluate_model(model,
         print(f"\n❌ No model to evaluate")
         return None
 
-    score = model.score(x=X, y=y)
+    score = model.score(X, y)
+
+    print(f"✅ Model evaluated, R2 score: {score}")
 
     return score
