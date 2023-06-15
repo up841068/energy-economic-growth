@@ -18,7 +18,7 @@ MLFLOW_EXPERIMENT = os.environ.get("MLFLOW_EXPERIMENT")
 LOCAL_DATA_PATH = os.path.join(os.path.expanduser('~'), ".lewagon", "mlops", "data", "raw") # OK
 LOCAL_REGISTRY_PATH =  os.path.join(os.path.expanduser('~'), ".lewagon", "mlops", "training_outputs")
 
-COLUMN_NAMES = ['scale__coal_elec_per_capita','scale__oil_elec_per_capita','scale__gas_elec_per_capita','scale__hydro_elec_per_capita','scale__nuclear_elec_per_capita','scale__biofuel_elec_per_capita','scale__other_renewables_elec_per_capita_exc_biofuel','scale__solar_elec_per_capita','scale__wind_elec_per_capita','remainder__country','remainder__year','remainder__GDP_per_capita']
+COLUMN_NAMES = ['scale__coal_elec_per_capita','scale__oil_elec_per_capita','scale__gas_elec_per_capita','scale__hydro_elec_per_capita','scale__nuclear_elec_per_capita','scale__biofuel_elec_per_capita','scale__solar_elec_per_capita','scale__wind_elec_per_capita','remainder__country','remainder__year','remainder__GDP_per_capita']
 
 # DTYPES_RAW = {
 #     "fare_amount": "float32",
