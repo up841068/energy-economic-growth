@@ -1,3 +1,7 @@
+import sys
+sys.path.insert(0, '..')
+sys.path.insert(0, '../..')
+
 from fastapi import FastAPI
 import joblib
 from energy_economy.params import *
@@ -5,7 +9,7 @@ from colorama import Fore, Style
 import mlflow
 from mlflow.tracking import MlflowClient
 import pandas as pd
-
+import os
 
 app = FastAPI()
 
@@ -64,43 +68,72 @@ def index():
 # You just need to define the parameters you want to pass as
 # the function parameters
 
-def predict(scale__coal_elec_per_capita,
-            scale__oil_elec_per_capita,
-            scale__gas_elec_per_capita,
-            scale__hydro_elec_per_capita,
-            scale__nuclear_elec_per_capita,
-            scale__biofuel_elec_per_capita,
-            scale__solar_elec_per_capita,
-            scale__wind_elec_per_capita):
+def predict(coal_elec_per_capita,
+            oil_elec_per_capita,
+            gas_elec_per_capita,
+            hydro_elec_per_capita,
+            nuclear_elec_per_capita,
+            biofuel_elec_per_capita,
+            solar_elec_per_capita,
+            wind_elec_per_capita):
     # REMEMBER that the parameters passed above are of type str. So don't
     # forget to consider this and convert to numerical datatype (as below).
 
     # Loading the latest version of the model
     # model = load_model()
-    model = joblib.load('20230614-155715.h5') # Loads local model
 
-    # ADD A FUNCTION HERE THAT CONVERTS PERCENTAGE INPUT INTO ABSOLUTE VALUES TO BE USED AS INPUT TO THE PREDICTION
+    model = joblib.load('energy_economy/api/20230615-114031.h5') # Loads local model
 
-    X_pred = pd.DataFrame([scale__coal_elec_per_capita,
-            scale__oil_elec_per_capita,
-            scale__gas_elec_per_capita,
-            scale__hydro_elec_per_capita,
-            scale__nuclear_elec_per_capita,
-            scale__biofuel_elec_per_capita,
-            scale__solar_elec_per_capita,
-            scale__wind_elec_per_capita], columns=['scale__coal_elec_per_capita',
-                                                    'scale__oil_elec_per_capita',
-                                                    'scale__gas_elec_per_capita',
-                                                    'scale__hydro_elec_per_capita',
-                                                    'scale__nuclear_elec_per_capita',
-                                                    'scale__biofuel_elec_per_capita',
-                                                    'scale__solar_elec_per_capita',
-                                                    'scale__wind_elec_per_capita'])
+    abs_energy_production = 4000
+
+    X_pred = pd.DataFrame([[float(coal_elec_per_capita)*abs_energy_production,
+            float(oil_elec_per_capita)*abs_energy_production,
+            float(gas_elec_per_capita)*abs_energy_production,
+            float(hydro_elec_per_capita)*abs_energy_production,
+            float(nuclear_elec_per_capita)*abs_energy_production,
+            float(biofuel_elec_per_capita)*abs_energy_production,
+            float(solar_elec_per_capita)*abs_energy_production,
+            float(wind_elec_per_capita)*abs_energy_production,
+            str('Brazil'),
+            int(2022),
+            float(2000.09)]], columns=['coal_elec_per_capita',
+                                        'oil_elec_per_capita',
+                                        'gas_elec_per_capita',
+                                        'hydro_elec_per_capita',
+                                        'nuclear_elec_per_capita',
+                                        'biofuel_elec_per_capita',
+                                        'solar_elec_per_capita',
+                                        'wind_elec_per_capita',
+                                        'country',
+                                        'year',
+                                        'GDP_per_capita'])
+
+    # Ordering the column names
+    X_pred = X_pred[['country', 'year', 'coal_elec_per_capita', 'oil_elec_per_capita',
+                    'gas_elec_per_capita', 'hydro_elec_per_capita',
+                    'nuclear_elec_per_capita', 'biofuel_elec_per_capita',
+                    'solar_elec_per_capita', 'wind_elec_per_capita', 'GDP_per_capita']]
+
     # Using the pickle file containing the fitted scaler to process the X_pred
-    pipeline = joblib.load('prec.pkl')
+    pipeline_scaler = joblib.load('energy_economy/api/prec.pkl')
 
-    X_transformed = pipeline.transform(X_pred)
-    result = model.predict(X_transformed)
-    return {'result': result}
+    # Scaling the X_pred
+    X_scaled = pd.DataFrame(pipeline_scaler.transform(X_pred),
+                            columns=pipeline_scaler.get_feature_names_out())
 
-# preprocessar o input do usuario!!
+    # Dropping the columns that are not used in the prediction
+    X_scaled.drop(columns=['remainder__country', 'remainder__year', 'remainder__GDP_per_capita'], inplace=True)
+
+    # Predicting the results with the X_scaled
+    result = model.predict(X_scaled)
+    return {'result': result[0]}
+
+
+print(predict(coal_elec_per_capita=0.2,
+            oil_elec_per_capita=0.11,
+            gas_elec_per_capita=0.05,
+            hydro_elec_per_capita=0.05,
+            nuclear_elec_per_capita=0.1,
+            biofuel_elec_per_capita=0.2,
+            solar_elec_per_capita=0.16,
+            wind_elec_per_capita=0.14))

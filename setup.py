@@ -1,5 +1,5 @@
 from setuptools import setup
 
-setup(name='toto',
+setup(name='energy-economic-growth',
       description="package description",
-      packages=["toto"])
+      packages=["energy-economic-growth"])

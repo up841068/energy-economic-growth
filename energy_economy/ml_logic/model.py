@@ -15,8 +15,8 @@ def initialize_model():
     """
 
     # Initialize the model
-    poly_model = PolynomialFeatures(degree=3)
-    ridge_reg = Ridge(alpha=0.1)
+    poly_model = PolynomialFeatures(degree=2)
+    ridge_reg = Ridge(alpha=0.0, tol=0.001, solver='lsqr')
 
     # Create a pipeline to combine the polynomial features and the Ridge model
     pipeline = make_pipeline(poly_model, ridge_reg)
