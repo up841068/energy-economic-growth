@@ -5,3 +5,4 @@ numpy
 colorama
 mlflow
 pandas
+seaborn
