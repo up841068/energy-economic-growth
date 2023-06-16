@@ -208,9 +208,28 @@ st.text(' ')
 
 
 ### GET THE PREDICTION VALUE FROM THE API USING THE INPUTS
-prediction_sc1 = requests.get(f'https://my-api-ribizrrcua-ew.a.run.app/predict?coal_elec_per_capita={coal_sc1}&oil_elec_per_capita={oil_sc1}&gas_elec_per_capita={gas_sc1}&hydro_elec_per_capita={hyd_sc1}&nuclear_elec_per_capita={nuc_sc1}&biofuel_elec_per_capita={bio_sc1}&solar_elec_per_capita={sol_sc1}&wind_elec_per_capita={win_sc1}')
 
-prediction_sc2 = requests.get(f'https://my-api-ribizrrcua-ew.a.run.app/predict?coal_elec_per_capita={coal_sc2}&oil_elec_per_capita={oil_sc2}&gas_elec_per_capita={gas_sc2}&hydro_elec_per_capita={hyd_sc2}&nuclear_elec_per_capita={nuc_sc2}&biofuel_elec_per_capita={bio_sc2}&solar_elec_per_capita={sol_sc2}&wind_elec_per_capita={win_sc2}')
+coal_sc1_abs = coal_sc1*energy_production
+oil_sc1_abs = oil_sc1*energy_production
+gas_sc1_abs = gas_sc1*energy_production
+hyd_sc1_abs = hyd_sc1*energy_production
+nuc_sc1_abs = nuc_sc1*energy_production
+bio_sc1_abs = bio_sc1*energy_production
+sol_sc1_abs = sol_sc1*energy_production
+win_sc1_abs = win_sc1*energy_production
+
+coal_sc2_abs = coal_sc2*energy_production
+oil_sc2_abs = oil_sc2*energy_production
+gas_sc2_abs = gas_sc2*energy_production
+hyd_sc2_abs = hyd_sc2*energy_production
+nuc_sc2_abs = nuc_sc2*energy_production
+bio_sc2_abs = bio_sc2*energy_production
+sol_sc2_abs = sol_sc2*energy_production
+win_sc2_abs = win_sc2*energy_production
+
+prediction_sc1 = requests.get(f'https://my-api-ribizrrcua-ew.a.run.app/predict?coal_elec_per_capita={coal_sc1_abs}&oil_elec_per_capita={oil_sc1_abs}&gas_elec_per_capita={gas_sc1_abs}&hydro_elec_per_capita={hyd_sc1_abs}&nuclear_elec_per_capita={nuc_sc1_abs}&biofuel_elec_per_capita={bio_sc1_abs}&solar_elec_per_capita={sol_sc1_abs}&wind_elec_per_capita={win_sc1_abs}')
+
+prediction_sc2 = requests.get(f'https://my-api-ribizrrcua-ew.a.run.app/predict?coal_elec_per_capita={coal_sc2_abs}&oil_elec_per_capita={oil_sc2_abs}&gas_elec_per_capita={gas_sc2_abs}&hydro_elec_per_capita={hyd_sc2_abs}&nuclear_elec_per_capita={nuc_sc2_abs}&biofuel_elec_per_capita={bio_sc2_abs}&solar_elec_per_capita={sol_sc2_abs}&wind_elec_per_capita={win_sc2_abs}')
 
 st.write('---')
 
