@@ -4,7 +4,7 @@ import os
 import pandas as pd
 
 
-st.sidebar.image("logo2.png", width=200)
+#st.sidebar.image("logo2.png", width=200)
 
 # Title of the page with emojis
 st.markdown(f"""

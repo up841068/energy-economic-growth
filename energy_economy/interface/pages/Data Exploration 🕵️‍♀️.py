@@ -7,7 +7,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 # Left menu logo
-st.sidebar.image("logo2.png", width=200)
+#st.sidebar.image("logo2.png", width=200)
 
 
 

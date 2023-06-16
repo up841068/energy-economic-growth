@@ -4,7 +4,7 @@ import numpy as np
 import streamlit as st
 
 # Left menu logo
-st.sidebar.image("logo2.png", width=200)
+#st.sidebar.image("logo2.png", width=200)
 
 url = 'https://raw.githubusercontent.com/up841068/energy-economic-growth/main/raw_data/df.csv'
 #df = pd.read_csv(url, engine='url')
