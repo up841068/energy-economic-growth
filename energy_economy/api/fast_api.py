@@ -84,7 +84,7 @@ def predict(coal_elec_per_capita,
 
     model = joblib.load('energy_economy/api/20230615-114031.h5') # Loads local model
 
-    abs_energy_production = 4000
+    abs_energy_production = 7704
 
     X_pred = pd.DataFrame([[float(coal_elec_per_capita)*abs_energy_production,
             float(oil_elec_per_capita)*abs_energy_production,
@@ -130,10 +130,10 @@ def predict(coal_elec_per_capita,
 
 
 print(predict(coal_elec_per_capita=0.2,
-            oil_elec_per_capita=0.11,
-            gas_elec_per_capita=0.05,
-            hydro_elec_per_capita=0.05,
+            oil_elec_per_capita=0.2,
+            gas_elec_per_capita=0.2,
+            hydro_elec_per_capita=0.1,
             nuclear_elec_per_capita=0.1,
-            biofuel_elec_per_capita=0.2,
-            solar_elec_per_capita=0.16,
-            wind_elec_per_capita=0.14))
+            biofuel_elec_per_capita=0.1,
+            solar_elec_per_capita=0.05,
+            wind_elec_per_capita=0.05))
