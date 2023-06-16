@@ -28,14 +28,14 @@ st.markdown(f"""
 # Define the chart HTML string
 chart_html = """
 <div id="viz1594170887248" style="position: relative; width: 100%; height: 0; padding-bottom: 66.67%;">
-  <iframe src="https://ourworldindata.org/grapher/per-capita-electricity-generation?tab=chart&stackMode=absolute&time=1965..2020&country=OWID_WRL" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%;"></iframe>
+  <iframe src="https://ourworldindata.org/grapher/per-capita-electricity-generation?tab=map&stackMode=absolute&time=1965..2020&country=OWID_WRL" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%;"></iframe>
 </div>
 """
 st.write('---')
 
 st.markdown(f"""
 <div style="text-align: center;font-size:20px;font-weight:bold;">
-    Select an amount in USD for the total amount of electric energy per capita. Use the global chart below as a reference ⚙️.
+    Select the total amount of electricity (kWh) a country produces in one year. Use the global chart below as a reference ⚙️.
 </div>
 """, unsafe_allow_html=True)
 
