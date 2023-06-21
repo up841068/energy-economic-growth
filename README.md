@@ -18,8 +18,6 @@ To use this project, you need to set up the environment variables in the .env fi
 - MLFLOW_TRACKING_URI
 - MLFLOW_EXPERIMENT
 
-The dataset has been preprocessed before being sent to Google BigQuery. We have used Docker to build the API for this project.
-
 This model can be run either locally or through MLflow. The API has been built using FastAPI, and we used Docker to build the image and push it to Google Cloud Platform (GCP) Container Registry. Therefore, to run the app, you will need to have Docker installed and have access to the GCP Container Registry where the image is stored.
 
 ## App Usage
