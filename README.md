@@ -1,5 +1,5 @@
 # Impact of Renewable Energy Adoption on GDP
-In this project, we investigate how **electrical energy production per capita** affects the **real GDP per capita** using [Our World in Data](https://github.com/owid/energy-data) on electricity production per capita and [The World Bank](https://data.worldbank.org/) on real GDP per capita. The analysis includes a regression model that uses mathematical techniques to predict the relationship between renewable energy adoption and GDP.
+In this project, we investigate how **electrical energy production per capita** affects the **real GDP per capita** using [Our World in Data](https://github.com/owid/energy-data) on electricity production per capita and [The World Bank](https://data.worldbank.org/) on real GDP per capita. We used a Ridge and Polynomial features model to make predictions and understand the relationship between the electrict energy production and GDP of a country.
 
 ## Getting Started
 To use this project, you need to set up the environment variables in the .env file. The following parameters are required:
@@ -32,8 +32,8 @@ Despite the positive results, there are limitations to our analysis. We only use
 ## Contributors
 This project was completed by Fernando Maron, Pedro Abi-Samara, and Michel Essono.
 
-[Fernando Maron](https://www.linkedin.com/in/fmaron/)
-[Michel Essono](https://www.linkedin.com/in/michel-wilfred-essono-967868a6/)
-[Pedro Abi-Samara](https://www.linkedin.com/in/pedroabisamara/)
+- [Fernando Maron](https://www.linkedin.com/in/fmaron/)
+- [Michel Essono](https://www.linkedin.com/in/michel-wilfred-essono-967868a6/)
+- [Pedro Abi-Samara](https://www.linkedin.com/in/pedroabisamara/)
 
 If you have any questions, please don't hesitate to contact us via Github or LinkedIn.
